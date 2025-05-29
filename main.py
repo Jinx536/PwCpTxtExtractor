@@ -713,7 +713,13 @@ async def get_cpwp_course_content(session: aiohttp.ClientSession, headers: Dict[
                         url_val = f'https://media-cdn.classplusapp.com/tencent/{identifier}/master.m3u8'
                     elif "4b06bf8d61c41f8310af9b2624459378203740932b456b07fcf817b737fbae27" in url_val and url_val.endswith('.jpeg'):
     url_val = video_id = url_val.split('/')[-1].split('.')[0]
-url_val = f'https://media-cdn.classplusapp.com/alisg-cdn-a.classplusapp.com/b08bad9ff8d969639b2e43d5769342cc62b510c4345d2f7f153bec53be84fe35/{video_id}/master.m3u8'/{video_id}/master.m3u8'
+url_val = elif "4b06bf8d61c41f8310af9b2624459378203740932b456b07fcf817b737fbae27" in url_val and url_val.endswith('.jpeg'):
+    try:
+        video_id = url_val.split('/')[-1].split('.')[0]
+        url_val = f'https://media-cdn.classplusapp.com/alisg-cdn-a.classplusapp.com/b08bad9ff8d969639b2e43d5769342cc62b510c4345d2f7f153bec53be84fe35/{video_id}/master.m3u8'
+    except Exception as e:
+        logging.error(f"Error building video URL: {e}")
+        return None
     except Exception as e:
         logging.error(f"Error building video URL: {e}")
         return None
